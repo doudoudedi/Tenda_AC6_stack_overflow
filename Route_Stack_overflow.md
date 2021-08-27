@@ -14,7 +14,7 @@ Hardware Link:https://www.tenda.com.cn/download/detail-2661.html
 
 ​	I found vulnerability. On the Tenda AC6 router, the firmware version is us_ AC6V1.0BR_ V15.03.05.16_ multi_ Td01, the router's web server has a buffer overflow vulnerability -- httpd. When processing / goform / WiFi basicset, the strcpy function is directly used to copy the parameters to the stack, overwriting the variables and return addresses on the stack. Attackers can build payloads for arbitrary code execution
 
-##### Details
+##### Details && POC
 
 ​	httpd formWifiBasicSet fuction in IDA view
 
