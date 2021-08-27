@@ -94,7 +94,7 @@ headers={
 	"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8",
 	"X-Requested-With":"XMLHttpRequest",
 	"Origin":"http://192.168.33.6",
-	"Referer":"http://192.168.33.6/wireless_ssid.html?random=0.799348137601227&",
+	"Referer":"http://192.168.33.6/wireless_ssid.html?random=0.799348137601227&",#Packet capture analysis
 	"Upgrade-Insecure-Requests":"1"
 }
 
