@@ -2,7 +2,7 @@
 
 Vender ：Tenda
 
-Firmware version:US_AC6V1.0BR_V15.03.05.16_multi_TD01
+Firmware version:US_AC6V1.0BR_V15.03.05.16_multi_TD01 && US_AC7V1.0RTL_V15.03.06.44_multi_TD01.bin
 
 Exploit Author: [doudoudedi233@gmail.com](mailto:doudoudedi233@gmail.com)
 
