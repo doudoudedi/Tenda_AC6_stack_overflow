@@ -16,7 +16,7 @@ Hardware Link:https://www.tenda.com.cn/download/detail-2661.html
 
 ##### Details && POC
 
-​	httpd formWifiBasicSet fuction in IDA view
+​	httpd form WifiBasicSet fuction in IDA view
 
 <img src="./img/image-20210826171750780.png" alt="image-20210826171750780" style="zoom:50%;" />
 
